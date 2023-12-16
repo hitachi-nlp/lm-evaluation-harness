@@ -1,0 +1,12 @@
+task: folio
+dataset_path: tasksource/folio
+dataset_name: null
+training_split: train
+validation_split: validation
+test_split: validation
+doc_to_text: "premises: {{' '.join(premises)}}\nconclusion: {{conclusion}}\nAnswer:"
+doc_to_target: "{{label}}"
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true

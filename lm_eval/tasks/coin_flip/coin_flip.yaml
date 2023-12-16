@@ -1,0 +1,12 @@
+task: coin_flip
+dataset_path: skrishna/coin_flip
+dataset_name: null
+training_split: train
+validation_split: validation
+test_split: test
+doc_to_text: "{{inputs}}\nAnswer:"
+doc_to_target: "{{targets}}"
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true

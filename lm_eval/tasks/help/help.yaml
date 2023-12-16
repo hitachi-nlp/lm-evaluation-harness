@@ -1,0 +1,12 @@
+task: help
+dataset_path: metaeval/help-nli
+dataset_name: null
+training_split: train
+validation_split: train
+test_split: train
+doc_to_text: "{{ori_sentence}}\nHypothesis: {{new_sentence}}?\nAnswer:"
+doc_to_target: "{{gold_label}}"
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true

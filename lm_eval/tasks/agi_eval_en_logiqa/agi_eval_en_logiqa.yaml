@@ -1,0 +1,14 @@
+task: agi_eval_en_logiqa
+dataset_path: lighteval/agi_eval_en
+dataset_name: logiqa-en
+output_type: multiple_choice
+training_split: train
+validation_split: validation
+test_split: 
+doc_to_text: "{{passage}}\nQuestion: {{question}}\nAnswer:"
+doc_to_target: !function utils.doc_to_target
+doc_to_choice: "{{options}}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true

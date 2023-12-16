@@ -1,0 +1,12 @@
+task: art
+dataset_path: art
+dataset_name: null
+training_split: train
+validation_split: validation
+test_split: 
+doc_to_text: "{{observation_1}} {{observation_2}}\nHypothesis1: {{hypothesis_1}}\nHypothesis2: {{hypothesis_2}}\nAnswer:"
+doc_to_target: "{{label}}"
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true

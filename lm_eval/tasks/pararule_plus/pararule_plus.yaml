@@ -1,0 +1,12 @@
+task: pararule_plus
+dataset_path: qbao775/PARARULE-Plus
+dataset_name: 
+training_split: train
+validation_split: validation
+test_split: test
+doc_to_text: "{{context}}\nQuestion: {{question}}?\nAnswer:"
+doc_to_target: "{{label}}"
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true

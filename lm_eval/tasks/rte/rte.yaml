@@ -1,0 +1,12 @@
+task: rte
+dataset_path: yangwang825/rte
+dataset_name: null
+training_split: train
+validation_split: validation
+test_split: test
+doc_to_text: "{{text1}}\nHypothesis: {{text2}}?\nAnswer:"
+doc_to_target: "{{label_text}}"
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
