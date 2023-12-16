@@ -12,8 +12,3 @@ metric_list:
   - metric: acc
     aggregation: mean
     higher_is_better: true
-filter_list:
-  - name: remove_whitespace
-    filter:
-      - function: remove_whitespace
-      - function: take_first
