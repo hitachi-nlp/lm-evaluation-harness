@@ -4,7 +4,7 @@ dataset_name: null
 training_split: train
 validation_split: train
 test_split: train
-doc_to_text: "{{ori_sentence}}\nHypothesis: {{new_sentence}}?\nAnswer:"
+doc_to_text: "Premise: {{ori_sentence}}\nHypothesis: {{new_sentence}}?\nQuestion: does the premise entail the hypothesis? Answer with either \"entailment\" or \"neutral\"\nAnswer:"
 doc_to_target: "{{gold_label}}"
 metric_list:
   - metric: exact_match

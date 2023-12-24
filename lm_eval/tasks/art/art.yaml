@@ -4,7 +4,7 @@ dataset_name: null
 training_split: train
 validation_split: validation
 test_split: 
-doc_to_text: "{{observation_1}} {{observation_2}}\nHypothesis1: {{hypothesis_1}}\nHypothesis2: {{hypothesis_2}}\nAnswer:"
+doc_to_text: "Observations: {{observation_1}} {{observation_2}}\nQuestion: which hypothesis is more plausible?\n1: {{hypothesis_1}}\n2: {{hypothesis_2}}\nAnswer either with \"1\" or \"2\".\nAnswer:"
 doc_to_target: "{{label}}"
 metric_list:
   - metric: exact_match

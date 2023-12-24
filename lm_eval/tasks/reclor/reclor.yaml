@@ -5,7 +5,7 @@ output_type: multiple_choice
 training_split: train
 validation_split: validation
 test_split: validation
-doc_to_text: "{{context}}\nQuestion:{{question}}"
+doc_to_text: "Premises: {{context}}\nQuestion:{{question}}"
 doc_to_target: label
 doc_to_choice: "{{answers}}"
 metric_list:

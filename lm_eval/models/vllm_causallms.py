@@ -84,6 +84,7 @@ please install vllm via `pip install lm-eval[vllm]` or `pip install -e .[vllm]`"
             "swap_space": int(swap_space),
             "quantization": quantization,
             "seed": int(seed),
+            "enforce_eager": True,
         }
         if self.data_parallel_size <= 1:
             self.model = LLM(**self.model_args)
