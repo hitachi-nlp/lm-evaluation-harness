@@ -4,7 +4,7 @@ dataset_name: null
 training_split: train
 validation_split: validation
 test_split: validation
-doc_to_text: "premises: {{' '.join(premises)}}\nconclusion: {{conclusion}}\nAnswer:"
+doc_to_text: "Premises: {{' '.join(premises)}}\nConclusion: {{conclusion}}\nQuestion: do the premises derive the conclusion? Answer with either \"True\", \"False\" or \"Unknown\".\nAnswer:"
 doc_to_target: "{{label}}"
 metric_list:
   - metric: exact_match
