@@ -17,3 +17,5 @@ filter_list:
     filter:
       - function: remove_whitespace
       - function: take_first
+metadata:
+  version: 2.0

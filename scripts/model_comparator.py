@@ -1,13 +1,16 @@
 import argparse
-import numpy as np
-import lm_eval.evaluator
-from lm_eval import tasks
-from lm_eval import utils
-import scipy.stats
-from typing import Tuple, Dict, List
-import pandas as pd
-import torch
 import os
+from typing import Dict, List, Tuple
+
+import numpy as np
+import pandas as pd
+import scipy.stats
+import torch
+
+import lm_eval.evaluator
+import lm_eval.models.utils
+from lm_eval import tasks, utils
+
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 eval_logger = utils.eval_logger
@@ -111,7 +114,7 @@ if __name__ == "__main__":
         batch_size=args.batch,
     )
     memory_stats()
-    utils.clear_torch_cache()
+    lm_eval.models.utils.clear_torch_cache()
     eval_logger.info("Memory stats cleared")
     memory_stats()
     results_hf = lm_eval.evaluator.simple_evaluate(
