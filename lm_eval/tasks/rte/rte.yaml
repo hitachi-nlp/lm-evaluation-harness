@@ -1,10 +1,10 @@
 task: rte
-# dataset_path: yangwang825/rte
-dataset_path: SetFit/rte
+dataset_path: yangwang825/rte
+# dataset_path: SetFit/rte
 dataset_name: null
-training_split: train
+training_split: validation
 validation_split: validation
-test_split: test
+test_split: train
 doc_to_text: "Premise: {{text1}}\nHypothesis: {{text2}}\nQuestion: does the premise ental the hypothesis? Answer with either \"entailment\" or \"not entailment\".\nAnswer:"
 doc_to_target: "{{label_text}}"
 metric_list:
