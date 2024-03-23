@@ -2,9 +2,9 @@ task: reclor
 dataset_path: metaeval/reclor
 dataset_name:
 output_type: multiple_choice
-training_split: train
+training_split: validation
 validation_split: validation
-test_split: validation
+test_split: train
 doc_to_text: "Premises: {{context}}\nQuestion:{{question}}"
 doc_to_target: label
 doc_to_choice: "{{answers}}"
