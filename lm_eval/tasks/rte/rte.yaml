@@ -1,5 +1,6 @@
 task: rte
-dataset_path: yangwang825/rte
+# dataset_path: yangwang825/rte
+dataset_path: SetFit/rte
 dataset_name: null
 training_split: train
 validation_split: validation
