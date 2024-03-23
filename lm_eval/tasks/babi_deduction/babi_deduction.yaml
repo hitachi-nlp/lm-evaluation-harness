@@ -1,9 +1,9 @@
 task: babi_deduction
 dataset_path: tasksource/babi_nli
 dataset_name: basic-deduction
-training_split: train
+training_split: validation
 validation_split: validation
-test_split: test
+test_split: train
 doc_to_text: "Premise: {{premise}}\nHypothesis: {{hypothesis}}\nQuestion: does the premise entail the hypothesis (1) or not (0)? Answer with either \"1\" or \"0\"\nAnswer:"
 doc_to_target: "{{label}}"
 metric_list:
