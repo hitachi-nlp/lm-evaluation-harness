@@ -1,0 +1,18 @@
+task: proofwriter
+dataset_path: tasksource/proofwriter
+dataset_name: null
+training_split: train
+validation_split: validation
+test_split: test
+# doc_to_text: "Premises: {{theory}}\nHypothesis: {{question}}\nQuestion: do the premises derive the hyposesis? Answer with either \"True\", \"False\", or \"Uncertain\".\nAnswer:"
+doc_to_text: "Premises: {{theory}}\nQuestion: {{question}}? Answer with either \"True\", \"False\", or \"Unknown\nAnswer:"
+doc_to_target: "{{answer}}"
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+filter_list:
+  - name: remove_whitespace
+    filter:
+      - function: remove_whitespace
+      - function: take_first

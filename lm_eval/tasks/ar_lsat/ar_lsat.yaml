@@ -2,9 +2,9 @@ task: ar_lsat
 dataset_path: olegbask/AR-LSAT
 dataset_name: default
 output_type: multiple_choice
-training_split: train
+training_split: validation
 validation_split: validation
-test_split: test
+test_split: train
 doc_to_choice: "{{answers}}"
 doc_to_text: "{{context}}\nQuestion: {{question}}"
 doc_to_target: "{{label}}"
