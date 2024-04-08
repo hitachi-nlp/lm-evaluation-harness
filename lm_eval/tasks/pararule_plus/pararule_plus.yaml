@@ -1,5 +1,6 @@
 task: pararule_plus
-dataset_path: qbao775/PARARULE-Plus
+# dataset_path: qbao775/PARARULE-Plus
+dataset_path: hitachi-nlp/PARARULE-Plus   # shuffled version
 dataset_name: 
 training_split: train
 validation_split: validation

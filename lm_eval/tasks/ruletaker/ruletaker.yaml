@@ -1,5 +1,6 @@
 task: ruletaker
-dataset_path: tasksource/ruletaker
+# dataset_path: tasksource/ruletaker
+dataset_path: hitachi-nlp/ruletaker  # shuffled version
 dataset_name: null
 training_split: train
 validation_split: dev
