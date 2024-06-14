@@ -1,0 +1,14 @@
+task: babi_deduction_mcq
+dataset_path: tasksource/babi_nli
+dataset_name: basic-deduction
+output_type: multiple_choice
+training_split: validation
+validation_split: validation
+test_split: train
+doc_to_text: "Premise: {{premise}}\nHypothesis: {{hypothesis}}\nQuestion: does the premise entail the hypothesis (1) or not (0)? Answer with either \"1\" or \"0\"\nAnswer:"
+doc_to_target: "{{[1, 0].index(label)}}"
+doc_to_choice: ["1", "0"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true

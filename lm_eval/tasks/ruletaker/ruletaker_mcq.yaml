@@ -1,0 +1,15 @@
+task: ruletaker_mcq
+# dataset_path: tasksource/ruletaker
+dataset_path: hitachi-nlp/ruletaker  # shuffled version
+dataset_name: null
+output_type: multiple_choice
+training_split: train
+validation_split: dev
+test_split: test
+doc_to_text: "Premises: {{context}}\nHypothesis: {{question}}\nQuestion: do the premises derive the hypothesis? Answer with either \"entailment\" or \"not entailment\"\nAnswer:"
+doc_to_target: "{{['entailment', 'not entailment'].index(label)}}"
+doc_to_choice: ["entailment", "not entailment"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true

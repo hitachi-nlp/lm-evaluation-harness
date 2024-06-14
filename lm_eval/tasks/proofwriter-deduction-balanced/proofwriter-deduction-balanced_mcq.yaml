@@ -1,0 +1,15 @@
+task: proofwriter_deduction_balanced_mcq
+dataset_path: theoxo/proofwriter-deduction-balanced
+dataset_name: null
+training_split: train
+output_type: multiple_choice
+# validation_split: validation
+test_split: test
+# doc_to_text: "Premises: {{theory}}\nHypothesis: {{question}}\nQuestion: do the premises derive the hyposesis? Answer with either \"True\", \"False\", or \"Uncertain\".\nAnswer:"
+doc_to_text: "Premises: {{theory}}\nQuestion: {{question}}? Answer with either \"True\", \"False\", or \"Uncertain\nAnswer:"
+doc_to_target: "{{['True', 'False', 'Uncertain'].index(answer)}}"
+doc_to_choice: ["True", "False", "Uncertain"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true

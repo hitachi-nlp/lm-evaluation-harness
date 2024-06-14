@@ -1,0 +1,14 @@
+task: robust_lr_mcq
+dataset_path: tasksource/robustLR
+dataset_name: null
+output_type: multiple_choice
+training_split: train
+validation_split: dev
+test_split: test
+doc_to_text: "Premises: {{context}}\nHypothesis: {{statement}}\nQuestion: do the premises entail the hypothesis? Answer with either \"entailment\", \"contradiction\", or \"neutral\".\nAnswer:"
+doc_to_target: "{{['entailment', 'contradiction', 'neutral'].index(label)}}"
+doc_to_choice: ["entailment", "contradiction", "neutral"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
