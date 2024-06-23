@@ -21,7 +21,6 @@ filter_list:
     filter:
       - function: remove_whitespace
       - function: take_first
-num_fewshot: 0
+>>>>>>> main
 metadata:
   version: 1.0
-  num_fewshot: 3 # will be printed in results table
