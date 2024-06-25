@@ -21,6 +21,5 @@ filter_list:
     filter:
       - function: remove_whitespace
       - function: take_first
->>>>>>> main
 metadata:
   version: 1.0
