@@ -16,11 +16,11 @@ generation_kwargs:
     - "\n\n"
   do_sample: false
   temperature: 0.0
+num_fewshot: 3
 filter_list:
   - name: remove_whitespace
     filter:
       - function: remove_whitespace
       - function: take_first
->>>>>>> main
 metadata:
   version: 1.0

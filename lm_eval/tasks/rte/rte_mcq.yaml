@@ -1,0 +1,15 @@
+task: rte_mcq
+dataset_path: yangwang825/rte
+# dataset_path: SetFit/rte
+dataset_name: null
+output_type: multiple_choice
+training_split: validation
+validation_split: validation
+test_split: train
+doc_to_text: "Premise: {{text1}}\nHypothesis: {{text2}}\nQuestion: does the premise ental the hypothesis? Answer with either \"entailment\" or \"not entailment\".\nAnswer:"
+doc_to_target: "{{['entailment', 'not entailment'].index(label_text)}}"
+doc_to_choice: ["entailment", "not entailment"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true

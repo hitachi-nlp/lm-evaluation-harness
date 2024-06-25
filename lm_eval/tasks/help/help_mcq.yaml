@@ -1,0 +1,14 @@
+task: help_mcq
+dataset_path: metaeval/help-nli
+dataset_name: null
+output_type: multiple_choice
+training_split: train
+validation_split: train
+test_split: train
+doc_to_text: "Premise: {{ori_sentence}}\nHypothesis: {{new_sentence}}?\nQuestion: does the premise entail the hypothesis? Answer with either \"entailment\" or \"neutral\"\nAnswer:"
+doc_to_target: "{{['entailment', 'neutral'].index(gold_label)}}"
+doc_to_choice: ["entailment", "neutral"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true

@@ -1,0 +1,14 @@
+task: art_mcq
+dataset_path: art
+dataset_name: null
+output_type: multiple_choice
+training_split: train
+validation_split: validation
+test_split: 
+doc_to_text: "Observations: {{observation_1}} {{observation_2}}\nQuestion: which hypothesis is more plausible?\n1: {{hypothesis_1}}\n2: {{hypothesis_2}}\nAnswer either with \"1\" or \"2\".\nAnswer:"
+doc_to_target: "{{[1, 2].index(label)}}"
+doc_to_choice: ["1", "2"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true

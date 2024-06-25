@@ -1,0 +1,14 @@
+task: multi_nli_mcq
+dataset_path: multi_nli
+dataset_name: null
+output_type: multiple_choice
+training_split: train
+validation_split: validation_mismatched
+test_split: 
+doc_to_text: "Premise: {{premise}}\nHypothesis: {{hypothesis}}\nQuestion: does the premise entail the hypothesis? Answer with either \"0\" (entailment), \"1\" (neutral), or\"2\" (contradiction).\nAnswer:"
+doc_to_target: "{{[0, 1, 2].index(label)}}"
+doc_to_choice: ["0", "1", "2"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
