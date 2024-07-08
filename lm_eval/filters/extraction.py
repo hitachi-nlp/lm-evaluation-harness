@@ -37,7 +37,11 @@ class RegexFilter(Filter):
                 if match:
                     match = match[self.group_select]
                     if isinstance(match, tuple):
-                        match = [m for m in match if m][0]
+                        matches = [m for m in match if m]
+                        if len(match) >= 1:
+                            match = matches[0]
+                        else:
+                            match = self.fallback
                     match = match.strip()
                 else:
                     match = self.fallback
