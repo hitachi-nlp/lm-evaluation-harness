@@ -91,6 +91,11 @@ def setup_parser() -> argparse.ArgumentParser:
         help="Number of examples in few-shot context",
     )
     parser.add_argument(
+        "--prompt_with_knowledge",
+        action="store_true",
+        default=False,
+    )
+    parser.add_argument(
         "--batch_size",
         "-b",
         type=str,
@@ -301,7 +306,11 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
 
     if args.include_path is not None:
         eval_logger.info(f"Including path: {args.include_path}")
-    task_manager = TaskManager(args.verbosity, include_path=args.include_path)
+    if args.prompt_with_knowledge:
+        eval_logger.info("Prompting with knowledge.")
+    task_manager = TaskManager(args.verbosity,
+                               include_path=args.include_path,
+                               prompt_with_knowledge=args.prompt_with_knowledge)
 
     if "push_samples_to_hub" in evaluation_tracker_args and not args.log_samples:
         eval_logger.warning(

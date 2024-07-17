@@ -233,6 +233,7 @@ class Task(abc.ABC):
             None  # purposely induce errors in case of improper usage
         )
 
+
     def download(
         self,
         data_dir: Optional[str] = None,
@@ -695,9 +696,19 @@ class ConfigurableTask(Task):
         cache_dir=None,
         download_mode=None,
         config: Optional[dict] = None,
+        prompt_with_knowledge=False,
     ) -> None:  # TODO no super() call here
-        # Get pre-configured attributes
         self._config = self.CONFIG
+
+        if prompt_with_knowledge:
+            doc_to_text_org = self.doc_to_text
+            def doc_to_text_with_knowledge(doc):
+                if 'knowledges' in doc:
+                    return f'doc["knowledges"]\n{doc_to_text_org(doc)}'
+                else:
+                    eval_logger.warning('"knowledges" field not found in doc')
+                    return doc_to_text_org(doc)
+            self.doc_to_text = doc_to_text_with_knowledge
 
         # Use new configurations if there was no preconfiguration
         if self.config is None:
