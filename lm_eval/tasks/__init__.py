@@ -19,6 +19,7 @@ class TaskManager:
         verbosity="INFO",
         include_path: Optional[Union[str, List]] = None,
         include_defaults: bool = True,
+        prompt_with_knowledge: bool = False,
     ) -> None:
         self.verbosity = verbosity
         self.include_path = include_path
@@ -31,6 +32,7 @@ class TaskManager:
         self._all_tasks = sorted(list(self._task_index.keys()))
 
         self.task_group_map = collections.defaultdict(list)
+        self.prompt_with_knowledge = prompt_with_knowledge
 
     def initialize_tasks(
         self,
@@ -164,7 +166,7 @@ class TaskManager:
                 task_object = config["class"]()
             else:
                 config = self._process_alias(config, group=group)
-                task_object = ConfigurableTask(config=config)
+                task_object = ConfigurableTask(config=config, prompt_with_knowledge=self.prompt_with_knowledge)
             if group is not None:
                 task_object = (group, task_object)
             return {task: task_object}
