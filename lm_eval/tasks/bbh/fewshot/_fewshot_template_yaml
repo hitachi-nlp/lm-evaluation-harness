@@ -1,3 +1,4 @@
+group: bbh_fewshot
 dataset_path: lukaemon/bbh
 output_type: generate_until
 test_split: test
