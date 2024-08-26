@@ -1,0 +1,12 @@
+include: arc_easy.yaml
+task: k_arc_challenge
+
+dataset_path: json
+dataset_name: null
+fewshot_split: train
+dataset_kwargs:
+  data_files:
+    test: ./outputs.factorized-reasoning//00.generate_knowledge/2024-08-26.other_datasets/dtst=allenai/ai2_arc/dtst_cnfg_nm=ARC-Challenge/gnrtr_nm=openai.gpt-3.5-turbo-0125/test.json
+    train: ./outputs.factorized-reasoning//00.generate_knowledge/2024-08-26.other_datasets/dtst=allenai/ai2_arc/dtst_cnfg_nm=ARC-Challenge/gnrtr_nm=openai.gpt-3.5-turbo-0125/train.json
+    validation: ./outputs.factorized-reasoning//00.generate_knowledge/2024-08-26.other_datasets/dtst=allenai/ai2_arc/dtst_cnfg_nm=ARC-Challenge/gnrtr_nm=openai.gpt-3.5-turbo-0125/validation.json
+
