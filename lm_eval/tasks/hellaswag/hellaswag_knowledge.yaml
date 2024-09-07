@@ -1,0 +1,15 @@
+include: hellaswag.yaml
+task: hellaswag_knowledge
+
+dataset_path: json
+dataset_name: null
+training_split: train
+validation_split: validation
+test_split: test
+fewshot_split: train
+dataset_kwargs:
+  data_files:
+    test: ./outputs.factorized-reasoning//00.generate_knowledge/2024-08-26.other_datasets/dtst=hellaswag/dtst_cnfg_nm=None/gnrtr_nm=openai.gpt-3.5-turbo-0125/test.json
+    train: ./outputs.factorized-reasoning//00.generate_knowledge/2024-08-26.other_datasets/dtst=hellaswag/dtst_cnfg_nm=None/gnrtr_nm=openai.gpt-3.5-turbo-0125/train.json
+    validation: ./outputs.factorized-reasoning//00.generate_knowledge/2024-08-26.other_datasets/dtst=hellaswag/dtst_cnfg_nm=None/gnrtr_nm=openai.gpt-3.5-turbo-0125/validation.json
+

@@ -1,0 +1,15 @@
+include: arc_easy.yaml
+task: arc_challenge_knowledge
+
+dataset_path: json
+dataset_name: null
+training_split: train
+validation_split: validation
+test_split: test
+fewshot_split: train
+dataset_kwargs:
+  data_files:
+    test: ./outputs.factorized-reasoning/00.generate_reasoning/2024-09-06.large_train/dtst=allenai/ai2_arc/dtst_cnfg_nm=ARC-Challenge/gnrtr_nm=openai.gpt-4o-mini/nm_fcts=10/test.jsonl
+    train: ./outputs.factorized-reasoning/00.generate_reasoning/2024-09-06.large_train/dtst=allenai/ai2_arc/dtst_cnfg_nm=ARC-Challenge/gnrtr_nm=openai.gpt-4o-mini/nm_fcts=10/train.jsonl
+    validation: ./outputs.factorized-reasoning/00.generate_reasoning/2024-09-06.large_train/dtst=allenai/ai2_arc/dtst_cnfg_nm=ARC-Challenge/gnrtr_nm=openai.gpt-4o-mini/nm_fcts=10/validation.jsonl
+

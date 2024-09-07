@@ -704,7 +704,7 @@ class ConfigurableTask(Task):
             doc_to_text_org = self.doc_to_text
             def doc_to_text_with_knowledge(doc):
                 if 'knowledges' in doc:
-                    return f'doc["knowledges"]\n{doc_to_text_org(doc)}'
+                    return f'Based on the provided facts ($facts$), answer the question ($question$). $facts$ = {doc["knowledges"]}\n\n$question$ = {doc_to_text_org(doc)}'
                 else:
                     eval_logger.warning('"knowledges" field not found in doc')
                     return doc_to_text_org(doc)
