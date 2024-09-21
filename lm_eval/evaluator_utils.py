@@ -467,7 +467,12 @@ def consolidate_group_results(
                 ]
 
                 for metric_config in agg_metric_list:
-                    for filter_name in metric_config["filter_list"]:
+                    filters = metric_config["filter_list"]
+                    found_filter = metric.split(",")[1]
+                    if found_filter not in filters:
+                        filters.append(found_filter)
+
+                    for filter_name in filters:
                         if metric != ",".join([metric_config["metric"], filter_name]):
                             continue
 
