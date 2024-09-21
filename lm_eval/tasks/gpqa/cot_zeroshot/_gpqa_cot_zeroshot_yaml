@@ -1,7 +1,4 @@
 dataset_path: Idavidrein/gpqa
-group:
-  - gpqa
-  - gpqa_cot_zero_shot
 output_type: generate_until
 process_docs: !function utils.process_docs
 training_split: train
