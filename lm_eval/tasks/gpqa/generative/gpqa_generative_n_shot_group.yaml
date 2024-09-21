@@ -1,0 +1,10 @@
+group: gpqa_generative_n_shot
+task:
+  - gpqa_extended_generative_n_shot
+  - gpqa_diamond_generative_n_shot
+  - gpqa_main_generative_n_shot
+aggregate_metric_list:
+  - metric: exact_match
+    weight_by_size: True
+metadata:
+  version: 2

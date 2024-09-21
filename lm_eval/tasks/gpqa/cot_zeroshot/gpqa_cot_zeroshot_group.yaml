@@ -1,0 +1,10 @@
+group: gpqa_cot_zeroshot
+task:
+  - gpqa_extended_cot_zeroshot
+  - gpqa_diamond_cot_zeroshot
+  - gpqa_main_cot_zeroshot
+aggregate_metric_list:
+  - metric: exact_match
+    weight_by_size: True
+metadata:
+  version: 2

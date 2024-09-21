@@ -1,0 +1,12 @@
+group: gpqa_n_shot
+task:
+  - gpqa_extended_n_shot
+  - gpqa_diamond_n_shot
+  - gpqa_main_n_shot
+aggregate_metric_list:
+  - metric: acc
+    weight_by_size: True
+  - metric: acc_norm
+    weight_by_size: True
+metadata:
+  version: 2
