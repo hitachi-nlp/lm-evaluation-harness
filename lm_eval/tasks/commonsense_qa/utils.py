@@ -1,6 +1,9 @@
 import random
 import logging
 
+import datasets
+from lm_eval.utils import process_choices
+
 logger = logging.getLogger(__name__)
 
 
@@ -20,3 +23,26 @@ def doc_to_target(doc) -> int:
 
 def doc_to_choice(doc) -> int:
     return doc['choices']['text']
+
+
+
+def process_docs_cot_zeroshot(dataset: datasets.Dataset) -> datasets.Dataset:
+
+    def _process_doc(doc):
+        choices = doc['choices']['text']
+        if doc['answerKey'] in ['A', 'B', 'C', 'D', 'E']:
+            target = choices[['A', 'B', 'C', 'D', 'E'].index(doc['answerKey'])]
+        else:
+            target = choices[-1]
+        doc.update(process_choices(doc, choices, target))
+        return doc
+
+    return dataset.map(_process_doc)
+
+
+def doc_to_text_generation(doc):
+    return f"Question: {doc['question']}?\n{doc['choice_prompt']}"
+
+
+def doc_to_text_cot_zeroshot(doc):
+    return doc_to_text_generation(doc) + "\nLet's think step by step."

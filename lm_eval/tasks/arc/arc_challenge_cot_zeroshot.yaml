@@ -1,0 +1,3 @@
+include: arc_easy_cot_zeroshot.yaml
+task: arc_challenge_cot_zeroshot
+dataset_name: ARC-Challenge

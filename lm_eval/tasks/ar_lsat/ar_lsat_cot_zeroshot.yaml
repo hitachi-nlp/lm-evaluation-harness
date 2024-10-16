@@ -1,0 +1,35 @@
+task: ar_lsat_cot_zeroshot
+dataset_path: olegbask/AR-LSAT
+dataset_name: default
+training_split: validation
+validation_split: validation
+test_split: train
+output_type: generate_until
+# doc_to_choice: "{{answers}}"
+# doc_to_text: "{{context}}\nQuestion: {{question}}"
+doc_to_text: "We have several facts below. {{context}}\nQuestion: {{question}}?\nLet's think step by step."
+doc_to_target: "{{label}}"
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "regex"
+        regex_pattern: "((?<=The answer is )(.*)(?=.)|(?<=answer is )(.*)(?=.)|(?<=The answer: )(.*)(?=.)|(?<=The final answer: )(.*)(?=.))"
+      - function: "take_first"
+generation_kwargs:
+  until:
+    - "</s>"
+    - "Q:"
+    - "<|im_end|>"
+  do_sample: false
+  temperature: 0.0
+num_fewshot: 0
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+metadata:
+  version: 0.0
+dataset_kwargs:
+  trust_remote_code: true

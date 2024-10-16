@@ -1,0 +1,42 @@
+task: multi_nli_cot_zeroshot
+dataset_path: multi_nli
+dataset_name: null
+training_split: train
+validation_split: validation_mismatched
+test_split: 
+output_type: generate_until
+process_docs: !function utils.process_docs_cot_zeroshot
+doc_to_text: !function utils.doc_to_text_cot_zeroshot
+doc_to_target: "{{answer_id}}"
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "regex"
+        regex_pattern: "((?<=The answer is )(.*)(?=.)|(?<=answer is )(.*)(?=.)|(?<=The answer: )(.*)(?=.)|(?<=The final answer: )(.*)(?=.))"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "multi_choice_regex"
+        group_select: -1
+        ignore_case: true
+        ignore_punctuation: true
+        regex_pattern: "(\\([A-Z]\\))"
+      - function: "take_first"
+generation_kwargs:
+  until:
+    - "</s>"
+    - "Q:"
+    - "<|im_end|>"
+  do_sample: false
+  temperature: 0.0
+num_fewshot: 0
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+metadata:
+  version: 0.0
+dataset_kwargs:
+  trust_remote_code: true

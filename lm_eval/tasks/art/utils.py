@@ -1,22 +1,11 @@
-import re
-
 import datasets
+
 from lm_eval.utils import process_choices
 
-
-def doc_to_choice(doc):
-    choices = [
-        c[4:].rstrip(" ,")
-        for c in re.findall(r"[abcd] \) .*?, |e \) .*?$", doc["options"])
-    ]
-    return choices
-
-
 def process_docs_cot_zeroshot(dataset: datasets.Dataset) -> datasets.Dataset:
-
     def _process_doc(doc):
-        choices = doc_to_choice(doc)
-        target = choices[['a', 'b', 'c', 'd', 'e'].index(doc['correct'])]
+        choices = [doc['hypothesis_1'], doc['hypothesis_2']]
+        target = choices[doc['label'] - 1]
         doc.update(process_choices(doc, choices, target))
         return doc
 
@@ -24,7 +13,7 @@ def process_docs_cot_zeroshot(dataset: datasets.Dataset) -> datasets.Dataset:
 
 
 def doc_to_text_generation(doc):
-    return f"Question: {doc['problem']}"
+    return f"We have several facts below. {doc['observation_1']} {doc['observation_2']}\nwhich hypothesis is more plausible?\n{doc['choice_prompt']}"
 
 
 def doc_to_text_cot_zeroshot(doc):
