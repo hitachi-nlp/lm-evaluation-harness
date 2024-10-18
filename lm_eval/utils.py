@@ -512,7 +512,7 @@ def process_choices(doc,
 
     ids = ids[:len(choices)] if ids else _POSSIBLE_ANSWER_IDS[:len(choices)]
     answer_id = ids[choices.index(target)]
-    choice_prompt = ' '.join([id + ' ' + choice for id, choice in zip(ids, choices)]) + '.'\
+    choice_prompt = ' '.join([id + ' ' + str(choice) for id, choice in zip(ids, choices)]) + '.'\
         + ' Final answer should be in the format '\
         + ', '.join([f'"{id_}"' for id_ in ids[:-1]]) + ', and ' + f'"{ids[-1]}".'
 
