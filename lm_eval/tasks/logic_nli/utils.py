@@ -2,7 +2,7 @@ import datasets
 from lm_eval.utils import process_choices
 
 
-def process_docs_cot_zeroshot(dataset: datasets.Dataset) -> datasets.Dataset:
+def process_docs_generative(dataset: datasets.Dataset) -> datasets.Dataset:
 
     def _process_doc(doc):
         choices = ['entailment', 'self_contradiction', 'contradiction', 'neutral']
@@ -13,8 +13,9 @@ def process_docs_cot_zeroshot(dataset: datasets.Dataset) -> datasets.Dataset:
     return dataset.map(_process_doc)
 
 
-def doc_to_text_generation(doc):
+def doc_to_text_generative(doc):
     return f"We have several facts below. {doc['premise']}\nQuestion: {doc['hypothesis']}?\n{doc['choice_prompt']}"
 
+
 def doc_to_text_cot_zeroshot(doc):
-    return doc_to_text_generation(doc) + "\nLet's think step by step."
+    return doc_to_text_generative(doc) + "\nLet's think step by step."

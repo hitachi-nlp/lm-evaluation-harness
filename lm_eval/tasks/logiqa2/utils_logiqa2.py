@@ -36,7 +36,7 @@ def doc_to_text(doc) -> str:
 _COT_ZEROSHOT_IDs = ['(A)', '(B)', '(C)', '(D)', '(E)']
 
 
-def process_docs_cot_zeroshot(dataset: datasets.Dataset) -> datasets.Dataset:
+def process_docs_generative(dataset: datasets.Dataset) -> datasets.Dataset:
 
     def _process_doc(doc):
         if doc['answer'] not in ['a', 'b', 'c', 'd', 'e']:
@@ -51,7 +51,7 @@ def process_docs_cot_zeroshot(dataset: datasets.Dataset) -> datasets.Dataset:
     return dataset.map(_process_doc)
 
 
-def doc_to_text_generation(doc) -> str:
+def doc_to_text_generative(doc) -> str:
     prompt = "Passage: " + doc["text"] + "\n"
     prompt += "Question: " + doc["question"] + "\n"
     for choice, option in zip(_COT_ZEROSHOT_IDs, doc["options"]):
@@ -60,4 +60,4 @@ def doc_to_text_generation(doc) -> str:
 
 
 def doc_to_text_cot_zeroshot(doc):
-    return doc_to_text_generation(doc) + "\nLet's think step by step."
+    return doc_to_text_generative(doc) + "\nLet's think step by step."

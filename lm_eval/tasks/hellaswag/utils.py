@@ -28,7 +28,7 @@ def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:
 
 
 
-def process_docs_cot_zeroshot(dataset: datasets.Dataset) -> datasets.Dataset:
+def process_docs_generative(dataset: datasets.Dataset) -> datasets.Dataset:
 
     def _process_doc(doc):
         ids = ['(A)', '(B)', '(C)', '(D)', '(E)']
@@ -47,7 +47,7 @@ def process_docs_cot_zeroshot(dataset: datasets.Dataset) -> datasets.Dataset:
     return dataset.map(_process_doc)
 
 
-def process_docs_cot_zeroshot(dataset: datasets.Dataset) -> datasets.Dataset:
+def process_docs_generative(dataset: datasets.Dataset) -> datasets.Dataset:
 
     def _process_doc(doc):
         doc['query'] = preprocess(doc["activity_label"] + ": " + doc["ctx_a"] + " " + doc["ctx_b"].capitalize())
@@ -61,9 +61,9 @@ def process_docs_cot_zeroshot(dataset: datasets.Dataset) -> datasets.Dataset:
     return dataset.map(_process_doc)
 
 
-def doc_to_text_generation(doc):
+def doc_to_text_generative(doc):
     return f"{doc['query']}\nWhich is the best choice to follow after this text? ?\n{doc['choice_prompt']}\n"
 
 
 def doc_to_text_cot_zeroshot(doc):
-    return doc_to_text_generation(doc) + "\nLet's think step by step."
+    return doc_to_text_generative(doc) + "\nLet's think step by step."
