@@ -139,6 +139,9 @@ def simple_evaluate(
     eval_logger.setLevel(getattr(logging, f"{verbosity}"))
     start_date = time.time()
 
+    import socket
+    eval_logger.info('Hostname: %s', socket.gethostname())
+
     if delete_requests_cache:
         eval_logger.info("Deleting requests cache...")
         delete_cache()
@@ -399,6 +402,9 @@ def evaluate(
     """
 
     eval_logger.setLevel(getattr(logging, f"{verbosity}"))
+
+    import socket
+    eval_logger.info('Hostname: %s', socket.gethostname())
 
     # tracks all Instances/requests a model must generate output on.
     requests = defaultdict(list)
