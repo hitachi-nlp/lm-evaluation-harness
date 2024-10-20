@@ -1,0 +1,3 @@
+task: abduction_rules_cot_zeroshot
+include: abduction_rules_generative.yaml
+doc_to_text: !function utils.doc_to_text_cot_zeroshot

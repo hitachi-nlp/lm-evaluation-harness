@@ -1,0 +1,3 @@
+task: snli_cot_zeroshot
+include: snli_generative.yaml
+doc_to_text: !function utils.doc_to_text_cot_zeroshot

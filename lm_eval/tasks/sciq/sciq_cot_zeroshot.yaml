@@ -1,0 +1,3 @@
+task: sciq_cot_zeroshot
+include: sciq_generative.yaml
+doc_to_text: !function utils.doc_to_text_cot_zeroshot

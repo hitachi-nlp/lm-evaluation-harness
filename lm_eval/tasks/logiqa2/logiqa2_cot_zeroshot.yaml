@@ -1,0 +1,3 @@
+task: logiqa2_cot_zeroshot
+include: logiqa2_generative.yaml
+doc_to_text: !function utils_logiqa2.doc_to_text_cot_zeroshot

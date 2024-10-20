@@ -1,0 +1,3 @@
+task: arc_challenge_cot_zeroshot
+include: arc_challenge_generative.yaml
+doc_to_text: !function utils.doc_to_text_cot_zeroshot

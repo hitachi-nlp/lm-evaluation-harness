@@ -1,0 +1,3 @@
+task: folio_cot_zeroshot
+include: folio_generative.yaml
+doc_to_text: !function utils.doc_to_text_cot_zeroshot

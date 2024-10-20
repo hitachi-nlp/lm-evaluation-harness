@@ -1,0 +1,3 @@
+task: commonsense_qa_cot_zeroshot
+include: commonsense_qa_generative.yaml
+doc_to_text: !function utils.doc_to_text_cot_zeroshot

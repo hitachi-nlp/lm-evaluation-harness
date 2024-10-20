@@ -1,0 +1,3 @@
+task: help_cot_zeroshot
+include: help_generative.yaml
+doc_to_text: !function utils.doc_to_text_cot_zeroshot

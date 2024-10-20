@@ -1,0 +1,3 @@
+task: logic_nli_cot_zeroshot
+include: logic_nli_generative.yaml
+doc_to_text: !function utils.doc_to_text_cot_zeroshot

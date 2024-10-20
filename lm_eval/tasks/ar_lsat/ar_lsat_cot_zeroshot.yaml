@@ -1,0 +1,3 @@
+task: ar_lsat_cot_zeroshot
+include: ar_lsat_generative.yaml
+doc_to_text: !function utils.doc_to_text_cot_zeroshot

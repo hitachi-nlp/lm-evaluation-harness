@@ -10,11 +10,12 @@ import os
 import re
 from dataclasses import asdict, is_dataclass
 from itertools import islice
-from typing import Any, Callable, List
+from typing import Any, Callable, List, Optional, Dict
 
 import numpy as np
 import yaml
 from jinja2 import BaseLoader, Environment, StrictUndefined
+import datasets
 
 
 logging.basicConfig(
@@ -499,3 +500,26 @@ def weighted_f1_score(items):
     preds = unzipped_list[1]
     fscore = f1_score(golds, preds, average="weighted")
     return fscore
+
+
+_POSSIBLE_ANSWER_IDS = ['(A)', '(B)', '(C)', '(D)', '(E)', '(F)', '(G)']
+
+
+def process_choices(doc,
+                    choices: List,
+                    target: str,
+                    ids: Optional[List[str]] = None) -> Dict:
+
+    ids = ids[:len(choices)] if ids else _POSSIBLE_ANSWER_IDS[:len(choices)]
+    answer_id = ids[choices.index(target)]
+    choice_prompt = ' '.join([id + ' ' + str(choice) for id, choice in zip(ids, choices)]) + '.'\
+        + ' Final answer should be in the format '\
+        + ', '.join([f'"{id_}"' for id_ in ids[:-1]]) + ', and ' + f'"{ids[-1]}".'
+
+    out_doc = {
+        'choices': choices,
+        'answer_id': answer_id,
+        'choice_prompt': choice_prompt
+    }
+
+    return out_doc

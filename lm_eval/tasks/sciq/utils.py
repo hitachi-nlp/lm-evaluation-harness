@@ -1,22 +1,12 @@
-import re
-
 import datasets
+
 from lm_eval.utils import process_choices
-
-
-def doc_to_choice(doc):
-    choices = [
-        c[4:].rstrip(" ,")
-        for c in re.findall(r"[abcd] \) .*?, |e \) .*?$", doc["options"])
-    ]
-    return choices
-
 
 def process_docs_generative(dataset: datasets.Dataset) -> datasets.Dataset:
 
     def _process_doc(doc):
-        choices = doc_to_choice(doc)
-        target = choices[['a', 'b', 'c', 'd', 'e'].index(doc['correct'])]
+        choices = [doc['distractor1'], doc['distractor2'], doc['distractor3'], doc['correct_answer']]
+        target = choices[3]
         doc.update(process_choices(doc, choices, target))
         return doc
 
@@ -24,7 +14,7 @@ def process_docs_generative(dataset: datasets.Dataset) -> datasets.Dataset:
 
 
 def doc_to_text_generative(doc):
-    return f"Question: {doc['Problem']}"
+    return f"We have several facts below. {doc['support'].lstrip()}\nQuestion: {doc['question']}?\n{doc['choice_prompt']}"
 
 
 def doc_to_text_cot_zeroshot(doc):

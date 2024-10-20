@@ -1,0 +1,3 @@
+task: babi_deduction_cot_zeroshot
+include: babi_deduction_generative.yaml
+doc_to_text: !function utils.doc_to_text_cot_zeroshot
