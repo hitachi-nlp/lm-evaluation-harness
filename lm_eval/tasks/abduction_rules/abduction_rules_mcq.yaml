@@ -1,5 +1,4 @@
-# we reject this mcq version task, as the synthetic are not distractive enough, resulting in a very high accuracy
-# task: abduction_rules_mcq
+task: abduction_rules_mcq
 dataset_path: tasksource/AbductionRules
 dataset_name: null
 output_type: multiple_choice

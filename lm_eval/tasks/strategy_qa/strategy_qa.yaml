@@ -7,7 +7,7 @@ validation_split: test
 test_split: train
 doc_to_text: "Premises: {{question}}"
 doc_to_target: answer
-doc_to_choice: "{{[True, False]}}"
+doc_to_choice: "{{['True', 'False']}}"
 metric_list:
   - metric: acc
     aggregation: mean

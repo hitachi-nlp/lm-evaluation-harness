@@ -164,10 +164,11 @@ class MultiChoiceRegexFilter(RegexFilter):
 
                 next_alpha = chr(ord(next_alpha) + 1)
             fallback_regex = re.compile("|".join(fallback_regexes))
-            without_paren_fallback_regex = "|".join(without_paren_fallback_regexes)
-            without_paren_fallback_regex = re.compile(
-                f":[\s]*({without_paren_fallback_regex})"
-            )
+            # without_paren_fallback_regex = "|".join(without_paren_fallback_regexes)
+            # without_paren_fallback_regex = re.compile(
+            #     f":[\s]*({without_paren_fallback_regex})"
+            # )
+            without_paren_fallback_regex = self._make_without_paren_fallback_regex(without_paren_fallback_regexes)
 
             filtered = []
             for resp in r:
@@ -186,3 +187,21 @@ class MultiChoiceRegexFilter(RegexFilter):
             filtered_resps.append(filtered)
 
         return filtered_resps
+
+    def _make_without_paren_fallback_regex(self, without_paren_fallback_regexes):
+        without_paren_fallback_regex = "|".join(without_paren_fallback_regexes)
+        without_paren_fallback_regex = re.compile(
+            f":[\s]*({without_paren_fallback_regex})"
+        )
+        return without_paren_fallback_regex
+
+
+@register_filter("multi_choice_regex_flexible")
+class MultiChoiceRegexFlexibleFilter(MultiChoiceRegexFilter):
+
+    def _make_without_paren_fallback_regex(self, without_paren_fallback_regexes):
+        without_paren_fallback_regex = "|".join(without_paren_fallback_regexes)
+        without_paren_fallback_regex = re.compile(
+            f"[\s]*({without_paren_fallback_regex})[\.\n]"
+        )
+        return without_paren_fallback_regex
