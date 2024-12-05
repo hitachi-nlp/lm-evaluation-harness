@@ -1,14 +1,14 @@
 # A Folk of Language Model Evaluation Harness
 This is a folk of [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) used in our paper [Enhancing Reasoning Capabilities of LLMs via Principled Synthetic Logic Corpus
 ](https://arxiv.org/abs/2411.12498).
-We added several benchmarks to the original lm-evaluation-harness.  
+We added several benchmarks to the original lm-eval.  
 
 For the basics of lm-eval, such as installation, please refer to the original readme [below](#original-readme-of-language-model-evaluation-harness).
 
 
 
 
-## Release Branches (READ CAREFULLY to determine which branch suits you)
+## Release Branches
 * **(New!)** `NeurIPS_2024` branch (2024-12)
     - We released the code for training LLMs.
 
@@ -48,11 +48,9 @@ where `{task}` is specified from the following list:
     'logiqa2',
     'reclor',
 
-
     # ================ abductive reasoning =======================
     'abduction_rules_mcq',
     'art_mcq',
-
 
     # ================== nli =======================
     'snli_mcq',
