@@ -1,4 +1,96 @@
-# Language Model Evaluation Harness
+# A Folk of Language Model Evaluation Harness
+This is a folk of [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) used in our paper [Enhancing Reasoning Capabilities of LLMs via Principled Synthetic Logic Corpus
+](https://arxiv.org/abs/2411.12498).
+We added several benchmarks to the original lm-evaluation-harness.  
+
+For the basics of lm-eval, such as installation, please refer to the original readme [below](#original-readme-of-language-model-evaluation-harness).
+
+
+
+
+## Release Branches (READ CAREFULLY to determine which branch suits you)
+* **(New!)** `NeurIPS_2024` branch (2024-12)
+    - We released the code for training LLMs.
+
+
+
+
+## Evaluating LLMs on the Benchmarks
+```console
+python -m lm_eval \
+    --seed 1,1,1 \
+    --tasks {task}  \
+    --output_path {output_path} \
+    --model vllm \
+    --model_args dtype=auto,pretrained="{model_path}",gpu_memory_utilization=0.8,trust_remote_code=True,tensor_parallel_size=2,max_model_len=2048  \
+    --batch_size auto \
+    --num_fewshot 5 \
+    --limit 10000 \
+    --write_out \
+    --log_samples \
+    --show_config
+```
+where `{task}` is specified from the following list:
+```python
+[
+    # ================= benchmark suits =================
+    'mmlu',
+    'mmlu_pro',
+    'bbh_fewshot',
+    'bbh_cot_fewshot',
+    'bbh_cot_zeroshot',
+
+    # ================= deductive reasoning =================
+    'folio_mcq',
+    'robust_lr_mcq',
+    'logic_nli_mcq',
+    'ar_lsat',
+    'logiqa2',
+    'reclor',
+
+
+    # ================ abductive reasoning =======================
+    'abduction_rules_mcq',
+    'art_mcq',
+
+
+    # ================== nli =======================
+    'snli_mcq',
+    'multi_nli_mcq',
+    'rte_mcq',
+    'help_mcq',
+
+    # ================== commonsense =======================
+    'openbookqa',
+    'hellaswag',
+    'arc_easy',
+    'arc_challenge',
+    'commonsense_qa',
+
+    # ================== reading comprehension =======================
+    'squadv2',
+
+    # ================== qa =======================
+    'sciq',
+    'gpqa_n_shot',
+
+    # ================== math ==================
+    'gsm8k',
+    'gsm8k_cot',
+    'gsm8k_cot_zeroshot',
+    'hendrycks_math',   # "MATH" dataset
+    'mathqa',
+]
+```
+
+
+
+
+
+
+
+
+# Original Readme of Language Model Evaluation Harness
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10256836.svg)](https://doi.org/10.5281/zenodo.10256836)
 
