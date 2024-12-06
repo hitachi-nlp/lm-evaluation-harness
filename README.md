@@ -1,5 +1,5 @@
 # A Folk of Language Model Evaluation Harness
-This is a folk of [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) used in our paper [Enhancing Reasoning Capabilities of LLMs via Principled Synthetic Logic Corpus
+This is a fork of [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) used in our paper [Enhancing Reasoning Capabilities of LLMs via Principled Synthetic Logic Corpus
 ](https://arxiv.org/abs/2411.12498).
 We added several benchmarks to the original lm-eval.  
 
